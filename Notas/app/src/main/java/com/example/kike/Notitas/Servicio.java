@@ -17,6 +17,8 @@ import java.util.List;
 
 public class Servicio extends Service {
 
+
+
     @Override
     public void onCreate(){
 
@@ -27,10 +29,10 @@ public class Servicio extends Service {
     public int onStartCommand(Intent intent,int flag,int idProcess){
 
         try{
-        if(h==null) {
-            h = new hilo();
-            h.start();
-        }
+            if(h==null) {
+                h = new hilo();
+                h.start();
+            }
         }catch (Exception err){
 
         }
@@ -41,9 +43,9 @@ public class Servicio extends Service {
     @Override
     public void onDestroy(){
         try{
-        if(h.isAlive()) {
-            h.stop();
-        }
+            if(h.isAlive()) {
+                h.stop();
+            }
         }catch (Exception err){
 
         }
@@ -127,18 +129,18 @@ public class Servicio extends Service {
                             recordatorio1.setFecha(lista.get(i).getFecha());
                             recordatorio1.setHora(lista.get(i).getHora());
 
-                             listarecordatorios.add(recordatorio1);
+                            listarecordatorios.add(recordatorio1);
 
-                             Notas nota = new Notas();
-                             nota = daonotas.obtenerNotaoTarea(lista.get(i).getNota()+"");
+                            Notas nota = new Notas();
+                            nota = daonotas.obtenerNotaoTarea(lista.get(i).getNota()+"");
 
                             if(nota.getTitulo().trim().length()>0 && nota.getDescripcion().trim().length()>0) {
                                 btnNoti_click(nota.getTitulo(), nota.getDescripcion(), i);
                             }
 
-                             }
+                        }
 
-                         }
+                    }
 
                     Thread.sleep(1000);
 
@@ -151,6 +153,7 @@ public class Servicio extends Service {
             }
         }
     }
+
 
 
 }

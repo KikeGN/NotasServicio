@@ -8,7 +8,6 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/notebook"
@@ -17,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.example.kike.Notitas.ActividadPrincipal"
+            android:name=".ActividadPrincipal"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -27,10 +26,34 @@
             </intent-filter>
         </activity>
 
-        <service android:name="com.example.kike.Notitas.Servicio" />
 
-        <activity android:name="com.example.kike.Notitas.ActivityRecordatorios" />
-        <activity android:name="com.example.kike.Notitas.ActivityMultimedia"></activity>
+
+        <activity android:name=".ActivityRecordatorios" />
+        <activity android:name=".ActivityMultimedia" />
+
+        <receiver
+            android:name=".MyReceiver"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+            </intent-filter> >
+
+        </receiver>
+        <service android:name=".Servicio">
+        <intent-filter>
+
+            <action android:name="Servicio"></action>
+        </intent-filter>
+        </service>
+
+
+
     </application>
 
 </manifest>
+
